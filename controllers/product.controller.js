@@ -1,4 +1,4 @@
-const Product = require('../models/product.model')
+const {Product, Pokemon} = require('../models/product.model')
 
 exports.test = (req, res, next) => {
     res.send('Greetings from the test controller')
@@ -18,3 +18,8 @@ exports.product_create = (req, res, next) => {
     })
 }
 
+exports.pokemon_create = (req, res, next) => {
+    let pokemon = new Pokemon({
+        
+    })
+}

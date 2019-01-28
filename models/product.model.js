@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false)
 const Schema = mongoose.Schema
 
 const ProductSchema = new Schema({
@@ -6,4 +7,10 @@ const ProductSchema = new Schema({
     price: {type: Number, required: true},
 })
 
+const PokemonSchema = new Schema({
+    name: {type: String, required: true},
+    url: {type: String, required: true},
+})
+
+module.exports = mongoose.model('Pokemon', PokemonSchema)
 module.exports = mongoose.model('Product', ProductSchema)
