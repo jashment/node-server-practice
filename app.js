@@ -18,6 +18,6 @@ app.use('/products', product)
 const port = 5775
 
 app.listen(port, () => {
-    console.log('Server is up and running on $(port)')
+    console.log(`Server is up and running on ${port}`)
 })
 
