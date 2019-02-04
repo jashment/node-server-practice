@@ -25,7 +25,7 @@ exports.pokemon_create = (req, res, next) => {
         url: req.body.url,
     })
 
-    pokemon.save((err) => {
+    pokemon.save(function(err) {
         if (err) {
             return next(err)
         }
