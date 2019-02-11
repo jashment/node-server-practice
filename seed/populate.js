@@ -1,25 +1,39 @@
 const fetch = require('node-fetch')
 
-fetch('https://pokeapi.co/api/v2/pokemon?limit=25') //https://pokeapi.co/api/v2/pokemon?limit=25
+fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
   .then(res => res.json())
   .then(myJson => {
     const pokeArray = myJson.results
     pokeArray.forEach(pokemon => {
-        postData(`http://localhost:5775/pokemon/pokemon`, pokemon)
-        .then(data => console.log(data)) // JSON-string from `response.json()` call
-        .catch(error => console.error(error));
+      //console.log(pokemon)
+      fetch(pokemon.url)
+          .then(result => result.json())
+          .then(fullPokemon => {
+            return newPokemon = {
+              height: fullPokemon.height,
+              weight: fullPokemon.weight,
+              name: fullPokemon.name,
+              //url: fullPokemon.url
+            }
+          })
+      .then (newOne => {
+        console.log(newOne)
+        postData(`http://localhost:5775/pokemon/pokemon`, newOne)
+        .then(data => {
+          console.log(data)
+        }) 
+        .catch(error => console.error(error))
     })
   })
+})
 
-  function postData(url = ``, data = {}) {
-    // Default options are marked with *
+  const postData = (url = ``, data = {}) => {
       return fetch(url, {
-          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          method: "POST", 
           headers: {
               "Content-Type": "application/json",
-              // "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: JSON.stringify(data), // body data type must match "Content-Type" header
+          body: JSON.stringify(data), 
       })
-      .then(response => response.text()); 
+      .then(response => response.json()); 
     }

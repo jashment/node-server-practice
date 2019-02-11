@@ -4,7 +4,9 @@ const Schema = mongoose.Schema
 
 const PokemonSchema = new Schema({
     name: {type: String, required: true},
-    url: {type: String, required: true},
+    url: {type: String, required: false},
+    height: {type: Number, required: true},
+    weight: {type: Number, required: true}
 })
 
 module.exports = mongoose.model('Pokemon', PokemonSchema)
