@@ -2,10 +2,13 @@
   "name": "server-practice",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node index.js",
     "start-dev": "node seed/populate.js"
+  },
+  "engines": {
+    "node": "11.6.0"
   },
   "author": "Jordan Ashment",
   "license": "ISC",

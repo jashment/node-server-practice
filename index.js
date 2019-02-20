@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use('/products', product)
 app.use('/pokemon', pokemon)
 
-const port = 5775
+const port =(process.env.PORT || 5775)
 
 app.listen(port, () => {
     console.log(`Server is up and running on ${port}`)
